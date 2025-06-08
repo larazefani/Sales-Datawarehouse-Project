@@ -25,26 +25,8 @@ GO
 USE dwh_sales;
 GO
 
--- Drop schemas if they exist (note: must remove dependent objects first in real use)
-IF EXISTS (SELECT * FROM sys.schemas WHERE name = 'bronze')
-BEGIN
-    DROP SCHEMA bronze;
-END
-GO
 
-IF EXISTS (SELECT * FROM sys.schemas WHERE name = 'silver')
-BEGIN
-    DROP SCHEMA silver;
-END
-GO
-
-IF EXISTS (SELECT * FROM sys.schemas WHERE name = 'gold')
-BEGIN
-    DROP SCHEMA gold;
-END
-GO
-
--- Create layered schemas for ELT architecture
+-- Create layered schemas
 
 -- Bronze: Raw ingested data from ERP & CRM
 CREATE SCHEMA bronze;
