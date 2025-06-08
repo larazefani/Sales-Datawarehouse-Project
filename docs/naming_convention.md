@@ -1,27 +1,31 @@
 # 🧾 Data Warehouse Naming Conventions
 
-This guide explains how to name schemas, tables, views, columns, and stored procedures in the data warehouse. Sticking to a consistent naming standard helps keep things clean, understandable, and easier to maintain.
+This guide explains how to name schemas, tables, views, columns, stored procedures, and scripts in the data warehouse. Following a clear, consistent naming style helps keep things organized and maintainable.
 
 ---
 
 ## 📚 Table of Contents
 
-- General Rules
-- Table Naming (Bronze, Silver, Gold)
-- Column Naming
-- Surrogate Keys
-- Technical Columns
-- Stored Procedures
+- [⚙️ General Rules](#️-general-rules)
+- [🧱 Table Naming Conventions](#-table-naming-conventions)
+  - [🟤 Bronze Layer](#-bronze-layer)
+  - [🪙 Silver Layer](#-silver-layer)
+  - [🏆 Gold Layer](#-gold-layer)
+- [📌 Column Naming](#-column-naming)
+  - [🔑 Surrogate Keys](#-surrogate-keys)
+  - [🛠️ Technical Columns](#️-technical-columns)
+- [🧮 Stored Procedures](#-stored-procedures)
 
 ---
 
 ## ⚙️ General Rules
 
-- Use **snake_case** (lowercase with underscores) for all names.
-- Always use **English**.
-- Avoid using **SQL reserved words** (like `select`, `table`, `from`, etc.).
-  
-Example: ✅ `customer_sales`, ❌ `CustomerSales` or `select`
+- Use `snake_case` (lowercase + underscores).
+- Use **English** only.
+- Don’t use **SQL reserved words** (`select`, `from`, `table`, etc.).
+
+✅ `customer_sales`  
+❌ `CustomerSales`, `select`
 
 ---
 
@@ -29,41 +33,45 @@ Example: ✅ `customer_sales`, ❌ `CustomerSales` or `select`
 
 ### 🟤 Bronze Layer
 
-- Table names start with the **source system name**.
-- Keep the original source table name—**no renaming**.
+- Prefix table names with the **source system**.
+- Keep the original name from the source—**no renaming**.
 
 **Pattern**:  
 `<source>_<entity>`
 
 **Example**:  
-`crm_customer_info` → Customer data from CRM system
+`crm_customer_info` → Customer data from CRM
+
+---
 
 ### 🪙 Silver Layer
 
-- Follows the **same rule as Bronze**: use the source system and original table name.
+- Same rule as Bronze: source system + original table name.
 
 **Pattern**:  
 `<source>_<entity>`
 
 **Example**:  
-`erp_product_list` → Product list from ERP system
+`erp_product_list` → Product list from ERP
+
+---
 
 ### 🏆 Gold Layer
 
-- Tables use **business-friendly names** with a clear prefix that shows their role.
+- Use **business-friendly names** with a prefix showing the table’s role.
 
 **Pattern**:  
 `<category>_<entity>`
 
-Where:
+**Categories**:
 - `dim_` → Dimension tables  
 - `fact_` → Fact tables  
-- `report_` → Report-level summary tables
+- `report_` → Summary/report tables
 
-**Examples**:  
-- `dim_customers` → Customer dimension  
-- `fact_sales` → Sales fact table  
-- `report_sales_monthly` → Monthly sales report
+**Examples**:
+- `dim_customers`
+- `fact_sales`
+- `report_sales_monthly`
 
 ---
 
@@ -71,13 +79,15 @@ Where:
 
 ### 🔑 Surrogate Keys
 
-Use `_key` as a suffix for all surrogate (primary) keys in dimension tables.
+Use `_key` suffix for surrogate (primary) keys in dimension tables.
 
 **Pattern**:  
 `<table_name>_key`
 
 **Example**:  
-`customer_key` → Surrogate key in `dim_customers`
+`customer_key` → Primary key in `dim_customers`
+
+---
 
 ### 🛠️ Technical Columns
 
@@ -87,18 +97,18 @@ System-generated columns should start with `dwh_`.
 `dwh_<purpose>`
 
 **Example**:  
-`dwh_load_date` → Date when the row was loaded into the warehouse
+`dwh_load_date` → Date the record was loaded
 
 ---
 
 ## 🧮 Stored Procedures
 
-All procedures for loading data into a specific layer must follow this format:
+Stored procedures for data loading should follow this pattern:
 
 **Pattern**:  
 `load_<layer>`
 
-**Examples**:  
+**Examples**:
 - `load_bronze` → Loads raw data  
-- `load_silver` → Loads cleaned and transformed data  
-- `load_gold` → Loads final business-facing tables
+- `load_silver` → Loads cleaned data  
+- `load_gold` → Loads final business-layer tables
