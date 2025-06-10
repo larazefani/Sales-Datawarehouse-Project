@@ -56,8 +56,41 @@ Develop SQL-based analytics to generate insights into:
 
 ```bash
 .
-├── datasets/               # Raw ERP & CRM CSV files
-├── scripts/                # SQL scripts for ETL and analysis
-├── tests/                  # SQL tests and data validation scripts
-├── docs/                   # Data model diagrams and documentation 
-├── README.md
+📁 datasets
+├── 📁 source_crm
+│ ├── cust_info.csv
+│ ├── placeholder
+│ ├── prd_info.csv
+│ └── sales_details.csv
+├── 📁 source_erp
+│ ├── CUST_AZ12.csv
+│ ├── LOC_A101.csv
+│ ├── PX_CAT_G1V2.csv
+│ ├── placeholder
+│ └── placeholder
+
+📁 docs
+├── architecture.png
+├── data_catalog.md
+├── data_flow_diagram.png
+├── data_model.drawio.png
+├── integration_model.png
+├── naming_convention.md
+└── placeholder
+
+📁 scripts
+├── 📁 bronze
+│ ├── ddl_bronze.sql
+│ └── proc_load_bronze.sql
+├── 📁 gold
+│ └── ddl_gold.sql
+├── 📁 silver
+│ ├── ddl_silver.sql
+│ ├── proc_load_silver.sql
+│ └── init_database.sql
+└── placeholder
+
+📁 tests
+├── data_quality_checks_gold.sql
+├── data_quality_checks_silver.sql
+└── placeholder
