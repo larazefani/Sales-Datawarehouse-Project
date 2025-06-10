@@ -15,8 +15,8 @@ The Gold Layer contains the final, business-ready data in our data warehouse. �
 | Column Name   | Data Type | Description                                                                 |
 |---------------|-----------|-----------------------------------------------------------------------------|
 | customer_key  | INT       | Unique ID for each customer in this table. 🔑                                  |
-| customer_id   | INT       | Customer ID from the CRM system. 🆔                                           |
-| customer_number | NVARCHAR(50) | Customer Number from the CRM system. 🔢                                           |
+| customer_id   | INT       | Customer ID from the CRM system.                                          |
+| customer_number | NVARCHAR(50) | Customer Number from the CRM system.                                         |
 | first_name    | NVARCHAR(50) | Customer's first name.                                                    |
 | last_name     | NVARCHAR(50) | Customer's last name.                                                     |
 | country       | NVARCHAR(50) | Customer's country of residence.                                          |
@@ -36,10 +36,10 @@ The Gold Layer contains the final, business-ready data in our data warehouse. �
 | Column Name         | Data Type | Description                                                                 |
 |---------------------|-----------|-----------------------------------------------------------------------------|
 | product_key         | INT       | Unique ID for each product in this table. 🔑                                  |
-| product_id          | INT       | Product ID from the CRM system. 🆔                                            |
-| product_number      | NVARCHAR(50) | Product number from the CRM system. 🔢                                            |
-| product_name        | NVARCHAR(50) | Product name. 🏷️                                                             |
-| category_id         | NVARCHAR(50) | Category ID from the ERP system. 🗂️                                          |
+| product_id          | INT       | Product ID from the CRM system.                                         |
+| product_number      | NVARCHAR(50) | Product number from the CRM system.                                             |
+| product_name        | NVARCHAR(50) | Product name.                                                           |
+| category_id         | NVARCHAR(50) | Category ID from the ERP system.                                           |
 | category            | NVARCHAR(50) | Product category (e.g., Bikes, Components).                               |
 | subcategory         | NVARCHAR(50) | Product subcategory (e.g., Road Bikes, Mountain Bikes).                    |
 | maintenance_required| NVARCHAR(50) | Indicates if the product requires maintenance (Yes/No).                     |
