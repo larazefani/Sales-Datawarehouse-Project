@@ -94,3 +94,5 @@ Develop SQL-based analytics to generate insights into:
 ├── data_quality_checks_gold.sql
 ├── data_quality_checks_silver.sql
 └── placeholder
+📄 LICENSE
+📄 README.md
